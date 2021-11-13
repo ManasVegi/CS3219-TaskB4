@@ -64,7 +64,7 @@ function UpdateWorkoutForm({ workouts, closeModal}) {
                     <Input type="text" name="id" id="name" placeholder="Enter new Workout Title" onChange={e => setName(e.target.value)} />
                 </Col>
             </FormGroup>
-            <Button>
+            <Button color="primary">
                 Update!
             </Button>
         </Form>

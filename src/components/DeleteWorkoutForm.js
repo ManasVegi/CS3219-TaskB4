@@ -50,7 +50,7 @@ function DeleteWorkoutForm({ workouts, closeModal}) {
                     </FormFeedback>
                 </Col>
             </FormGroup>
-            <Button>
+            <Button color="primary">
                 Delete!
             </Button>
         </Form>
