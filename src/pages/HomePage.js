@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Modal, ModalBody, ModalHeader, Table } from 'reactstrap'
 import AddWorkoutForm from '../components/AddWorkoutForm';
+import DeleteWorkoutForm from '../components/DeleteWorkoutForm';
 import UpdateWorkoutForm from '../components/UpdateWorkoutForm';
 import Workout from '../components/WorkoutComponent';
 import configs from '../configs';
@@ -56,6 +57,7 @@ function Home () {
     const [workouts, setWorkouts] = useState([]);
     const [isUpdateOpen, setUpdateOpen] = useState(false);
     const [isAddOpen, setAddOpen] = useState(false);
+    const [isDeleteOpen, setDeleteOpen] = useState(false);
     useEffect(() => {
         const requestOptions = {
             method: 'GET',
@@ -79,6 +81,9 @@ function Home () {
     const toggleAddModal = () => {
         setAddOpen(!isAddOpen);
     }
+    const toggleDeleteModal = () => {
+        setDeleteOpen(!isDeleteOpen);
+    }
     return (
         <div className="container">
             <Modal isOpen={isUpdateOpen} toggle={toggleUpdateModal}>
@@ -95,6 +100,14 @@ function Home () {
                 </ModalHeader>
                 <ModalBody>
                     <AddWorkoutForm closeModal={toggleAddModal} />
+                </ModalBody>
+            </Modal>
+            <Modal isOpen={isDeleteOpen} toggle={toggleDeleteModal}>
+                <ModalHeader toggle={toggleDeleteModal}>
+                    Delete Workout
+                </ModalHeader>
+                <ModalBody>
+                    <DeleteWorkoutForm workouts={workouts} closeModal={toggleDeleteModal} />
                 </ModalBody>
             </Modal>
             <div className="row mt-5">
@@ -119,11 +132,14 @@ function Home () {
             </div>
             </div>
             <div className="row">
-                <div className="col-8 col-md-4 col-lg-2">
+                <div className="col-8 col-md-4 col-lg-2 ms-2">
                     <Button type="button" color="primary" onClick={toggleUpdateModal}>Update Workout</Button>
                 </div>
                 <div className="col-8 col-md-4 col-lg-2 ms-2">
                     <Button type="button" color="primary" onClick={toggleAddModal}>Add Workout</Button>
+                </div>
+                <div className="col-8 col-md-4 col-lg-2 ms-2">
+                    <Button type="button" color="primary" onClick={toggleDeleteModal}>Delete Workout</Button>
                 </div>
             </div>
         </div>
