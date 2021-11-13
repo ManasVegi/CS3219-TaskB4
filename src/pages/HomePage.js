@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Modal, ModalBody, ModalHeader, Table } from 'reactstrap'
+import AddWorkoutForm from '../components/AddWorkoutForm';
 import UpdateWorkoutForm from '../components/UpdateWorkoutForm';
 import Workout from '../components/WorkoutComponent';
 import configs from '../configs';
@@ -54,6 +55,7 @@ const dummyData = [
 function Home () {
     const [workouts, setWorkouts] = useState([]);
     const [isUpdateOpen, setUpdateOpen] = useState(false);
+    const [isAddOpen, setAddOpen] = useState(false);
     useEffect(() => {
         const requestOptions = {
             method: 'GET',
@@ -74,6 +76,9 @@ function Home () {
     const toggleUpdateModal = () => {
         setUpdateOpen(!isUpdateOpen);
     }
+    const toggleAddModal = () => {
+        setAddOpen(!isAddOpen);
+    }
     return (
         <div className="container">
             <Modal isOpen={isUpdateOpen} toggle={toggleUpdateModal}>
@@ -82,6 +87,14 @@ function Home () {
                 </ModalHeader>
                 <ModalBody>
                     <UpdateWorkoutForm workouts={workouts} closeModal={toggleUpdateModal} />
+                </ModalBody>
+            </Modal>
+            <Modal isOpen={isAddOpen} toggle={toggleAddModal}>
+                <ModalHeader toggle={toggleAddModal}>
+                    Add Workout
+                </ModalHeader>
+                <ModalBody>
+                    <AddWorkoutForm closeModal={toggleAddModal} />
                 </ModalBody>
             </Modal>
             <div className="row mt-5">
@@ -108,6 +121,9 @@ function Home () {
             <div className="row">
                 <div className="col-8 col-md-4 col-lg-2">
                     <Button type="button" color="primary" onClick={toggleUpdateModal}>Update Workout</Button>
+                </div>
+                <div className="col-8 col-md-4 col-lg-2 ms-2">
+                    <Button type="button" color="primary" onClick={toggleAddModal}>Add Workout</Button>
                 </div>
             </div>
         </div>

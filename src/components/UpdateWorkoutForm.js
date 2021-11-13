@@ -51,10 +51,10 @@ function UpdateWorkoutForm({ workouts, closeModal}) {
                         console.log(workouts[id - 1])
                      }
                     }/>
+                    <FormFeedback>
+                        {`Make sure the workout ID is a positive integer <= number of workouts`}
+                    </FormFeedback>
                 </Col>
-                <FormFeedback>
-                    {`Make sure the workout ID is a positive integer <= number of workouts`}
-                </FormFeedback>
             </FormGroup>
             <FormGroup className="row">
                 <Col xs={2}>

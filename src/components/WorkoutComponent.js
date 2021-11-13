@@ -15,7 +15,6 @@ function Workout ( { workout, id }) {
 }
 
 const WorkoutInfo = ({id, name, setId, numSets, date}) => {
-    console.log("myId: " + id);
     if (setId === 0) {
         return (
             <>
