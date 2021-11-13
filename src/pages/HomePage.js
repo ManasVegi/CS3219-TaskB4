@@ -131,7 +131,7 @@ function Home () {
                 </Table>
             </div>
             </div>
-            <div className="row">
+            <div className="row justify-content-center">
                 <div className="col-8 col-md-4 col-lg-2 ms-2">
                     <Button type="button" color="primary" onClick={toggleUpdateModal}>Update Workout</Button>
                 </div>
